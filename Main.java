@@ -103,7 +103,7 @@ class Boss extends MonsterClass {
 
 public class Main {
     public static void main(String[] args) {
-        //Data for the RACES
+        //Stats data for the RACES
         Race human = new Race("Human", 1000, 50, 50, 25);
         Race elf = new Race("Elf", 1000, 65, 30, 35);
         Race dwarf = new Race("Dwarf", 1500, 30, 65, 20);
@@ -111,7 +111,7 @@ public class Main {
         Race demon = new Race("Demon", 800, 80, 35, 50);
         Race god = new Race("God", 2000, 100, 100, 50);
 
-        //Data for the WEAPONS
+        //Stats data for the WEAPONS
         Weapon longsword = new Weapon("Longsword", 500, 5, 10, 0, "Slash", "Parr");
         Weapon dagger = new Weapon("Dagger", 0, 5, 5, 10, "Stab", "Quicken");
         Weapon bow = new Weapon("Bow", 0, 10, 0, 5, "Arrow Shot", "Lock in");
