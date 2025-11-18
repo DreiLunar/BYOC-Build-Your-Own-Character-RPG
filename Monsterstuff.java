@@ -1,10 +1,19 @@
 class Player {
     static int hp = 1000; 
+    static int def = 30;
+    int atk = 200;
+
+    public void playerAttack(){
+        Boss.hp -= atk;
+        System.out.println("Player attacks for " + this.atk + " damage!");
+        System.out.println("Boss HP is now: " + Boss.hp);
+
+    }
 }
 class MonsterClass {
     String name;
     int atk;
-    int hp;
+    static int hp;
     int def;
     int sp;
 
@@ -136,13 +145,94 @@ class SkelKing extends Boss{
 
 }
 
+class Forneus extends Boss{
+    private boolean SoulRot = false;
+    private int timer = 2;
+    public Forneus(String name, int atk, int hp, int def, int sp, int phases) {
+        super(name, atk, hp, def, sp, phases);
+    }
+    @Override
+    public void takeTurn() {
+        if (SoulRot) {
+            super.attack();
+            timer--;
+            if (timer == 0){
+                SoulRotDamage();
+                timer = 2;
+            }
+            }
+     
+        else {
+            System.out.println("Affected by magic, your soul is being rotten away...");
+            SoulRot = true;
+            }
+        }
+    
+    public void SoulRotDamage(){
+        int damage = (2*(Player.def));
+        Player.hp -= damage;
+        System.out.println("Parts of player's soul has rotten... Took "+ damage+ " damage!");
+    }
+    } 
+
+class Asmodeus extends Boss{
+    public Asmodeus(String name, int atk, int hp, int def, int sp, int phases) {
+        super(name, atk, hp, def, sp, phases);
+    }
+    @Override
+    public void takeTurn() {
+            hpBasedDamage();
+            if (Math.random() < 0.3) {
+                hpBasedDamage();
+            } 
+    }
+
+    public void hpBasedDamage(){
+        double damage = (0.25*Player.hp + atk);
+        Player.hp -= (int)damage;
+        System.out.println(this.name + " attacks for " + damage + " damage!");
+        System.out.println("Player HP is now: " + Player.hp);
+    }
+}
+
+class Dantalion extends Boss{
+    public Dantalion(String name, int atk, int hp, int def, int sp, int phases) {
+        super(name, atk, hp, def, sp, phases);
+    }
+}
+
+class Astaroth extends Boss{
+    int resurrect = 3;
+    int max_hp = hp;
+        public Astaroth(String name, int atk, int hp, int def, int sp, int phases) {
+        super(name, atk, hp, def, sp, phases);
+    }
+    @Override
+    public void takeTurn() {
+            super.attack();
+            if(hp <=0){
+            Ressurection();
+            }
+    }
+    private void Ressurection(){
+        if(resurrect > 0){
+            hp = max_hp;
+            atk += 20;
+            def += 20;
+            System.out.println("Astaroth has turned back in time and became stronger");
+        }
+    }
+}
+
+
 public class Monsterstuff {
     public static void main(String[] args) {
-  
-        Boss currentBoss = new BoarKing("Litch", 60, 1000, 20, 10, 0);
+        Player user = new Player();
+        Boss currentBoss = new Astaroth("Forneus", 60, 1000, 20, 10, 0);
         MonsterClass slime = new MonsterClass("Slime", 25, 500, 10, 5);
         while (Player.hp > 0 && currentBoss.hp > 0) { 
             currentBoss.takeTurn();
+            user.playerAttack();
     }
 }
 }
