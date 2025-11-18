@@ -3,6 +3,10 @@ import java.util.Scanner;
 class Player {
     String name, raceName, weaponName, move1Name, move2Name;
     int hp, maxHp, atk, def, sp, statPointsToSpend;
+
+    boolean healingReversed = false;
+
+
     private Scanner scanner;
 
     public Player(String name, Race race, Weapon weapon) {
@@ -24,6 +28,23 @@ class Player {
         System.out.print("\n Welcome, " + this.name + ", the " + this.raceName + "!");
 
     }
+
+    public void heal(int amount) {
+    if (this.healingReversed) {
+        System.out.println("Dantalion's inverse ability is active!");
+        System.out.println("Your healing turns into damage!");
+        takeDamage(amount);
+    } else {
+        this.hp += amount;
+        if (this.hp > maxHp) {
+            this.hp = maxHp;
+        }
+    }
+    }
+}
+
+public void takeDamage(int amount) {
+
 }
 
 class Race {
