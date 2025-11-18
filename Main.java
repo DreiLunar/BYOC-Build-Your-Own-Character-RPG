@@ -72,14 +72,9 @@ class MonsterClass {
         this.def = def;
         this.sp = sp;
     }
-
-    
-    public void attack() {
-        System.out.println(this.name + " attacks for " + this.atk + " damage!");
-        Player.hp -= this.atk;
-        System.out.println("Player HP is now: " + Player.hp);
-    }
 }
+
+
 
 
 class Boss extends MonsterClass { 
@@ -119,15 +114,5 @@ public class Main {
         Weapon water = new Weapon("Water Element", 500, 5, 0, 0, "Water Jet", "Fountain of Life");
         Weapon earth = new Weapon("Earth Element", 250, 0, 10, 0, "Landslide", "Earth Wall");
         Weapon air = new Weapon("Air Element", 0, 5, 0, 10, "Air Slash", "Wind Chant");
-
-
-
-        Boss Boarking = new Boss("Boar king", 50, 1000, 20, 10, 0," is now charing a heavy attack for 2 rounds!");
-        MonsterClass slime = new MonsterClass("Slime", 25, 500, 10, 5);
-        
-        Boarking.attack(); //sample boss attack
-        Boarking.abilityUse(); //sample ability use, not sure pa pano 'to iimplement
-
-        slime.attack(); //Common enemy attack
     }
 }
