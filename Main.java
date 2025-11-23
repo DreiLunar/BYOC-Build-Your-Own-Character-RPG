@@ -1,81 +1,8 @@
-import java.util.Scanner;
-
-class Player {
-    String name, raceName, weaponName, move1Name, move2Name;
-    int hp, maxHp, atk, def, sp, statPointsToSpend;
-
-    boolean healingReversed = false;
-
-
-    private Scanner scanner;
-
-    public Player(String name, Race race, Weapon weapon) {
-        this.name = name;
-        this.scanner = new Scanner(System.in);
-        this.raceName = race.raceName;
-        this.weaponName = weapon.weaponName;
-        this.move1Name = weapon.move1Name;
-        this.move2Name = weapon.move2Name;
-
-        //Combined stats
-        this.maxHp = race.hp + weapon.hp;
-        this.hp = this.maxHp;
-        this.atk = race.atk + weapon.atk;
-        this.def = race.def + weapon.def;
-        this.sp = race.sp + weapon.sp;
-        this.statPointsToSpend = 0;
-
-        System.out.print("\n Welcome, " + this.name + ", the " + this.raceName + "!");
-
-    }
-
-    public void heal(int amount) {
-    if (this.healingReversed) {
-        System.out.println("Dantalion's inverse ability is active!");
-        System.out.println("Your healing turns into damage!");
-        takeDamage(amount);
-    } else {
-        this.hp += amount;
-        if (this.hp > maxHp) {
-            this.hp = maxHp;
-        }
-    }
-    }
-}
+import Models.Race;
+import Models.Weapon;
 
 public void takeDamage(int amount) {
-
 }
-
-class Race {
-    String raceName;
-    int hp, atk, def, sp;
-
-    public Race(String raceName, int hp, int atk, int def, int sp) {
-        this.raceName = raceName;
-        this.hp = hp;
-        this.atk = atk;
-        this.def = def;
-        this.sp = sp;
-    }
-}
-
-class Weapon {
-    String weaponName, move1Name, move2Name;
-    int hp, atk, def, sp;
-
-    public Weapon(String name, int hp, int atk, int def, int sp, String m1, String m2) {
-        this.weaponName = name;
-        this.hp = hp;
-        this.atk = atk;
-        this.def = def;
-        this.sp = sp;
-        this.move1Name = m1;
-        this.move2Name = m2;
-
-    }
-}
-
 
 
 class MonsterClass {
@@ -98,7 +25,7 @@ class MonsterClass {
 
 
 
-class Boss extends MonsterClass { 
+class Boss extends Monsters.MonsterClass {
     int phases;
     String ability; 
   
@@ -128,12 +55,12 @@ public class Main {
         Race god = new Race("God", 2000, 100, 100, 50);
 
         //Stats data for the WEAPONS
-        Weapon longsword = new Weapon("Longsword", 500, 5, 10, 0, "Slash", "Parr");
-        Weapon dagger = new Weapon("Dagger", 0, 5, 5, 10, "Stab", "Quicken");
-        Weapon bow = new Weapon("Bow", 0, 10, 0, 5, "Arrow Shot", "Lock in");
-        Weapon fire = new Weapon("Fire Element", 0, 5, 0, 5, "Ember", "Flame Wall");
-        Weapon water = new Weapon("Water Element", 500, 5, 0, 0, "Water Jet", "Fountain of Life");
-        Weapon earth = new Weapon("Earth Element", 250, 0, 10, 0, "Landslide", "Earth Wall");
-        Weapon air = new Weapon("Air Element", 0, 5, 0, 10, "Air Slash", "Wind Chant");
+            Weapon longsword = new Weapon("Longsword", 500, 5, 10, 0, "Slash", "Parr");
+            Weapon dagger = new Weapon("Dagger", 0, 5, 5, 10, "Stab", "Quicken");
+            Weapon bow = new Weapon("Bow", 0, 10, 0, 5, "Arrow Shot", "Lock in");
+            Weapon fire = new Weapon("Fire Element", 0, 5, 0, 5, "Ember", "Flame Wall");
+            Weapon water = new Weapon("Water Element", 500, 5, 0, 0, "Water Jet", "Fountain of Life");
+            Weapon earth = new Weapon("Earth Element", 250, 0, 10, 0, "Landslide", "Earth Wall");
+            Weapon air = new Weapon("Air Element", 0, 5, 0, 10, "Air Slash", "Wind Chant");
     }
 }

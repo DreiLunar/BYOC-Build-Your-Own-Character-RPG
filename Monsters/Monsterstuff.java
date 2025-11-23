@@ -1,3 +1,5 @@
+package Monsters;
+
 class Player {
     static int hp = 1000; 
     static int def = 30;
@@ -5,8 +7,8 @@ class Player {
 
     public void playerAttack(){
         Boss.hp -= atk;
-        System.out.println("Player attacks for " + this.atk + " damage!");
-        System.out.println("Boss HP is now: " + Boss.hp);
+        System.out.println("Monsters.Player attacks for " + this.atk + " damage!");
+        System.out.println("Monsters.Boss HP is now: " + Boss.hp);
 
     }
 }
@@ -30,7 +32,7 @@ class MonsterClass {
     public void attack() {
         System.out.println(this.name + " attacks for " + this.atk + " damage!");
         Player.hp -= this.atk;
-        System.out.println("Player HP is now: " + Player.hp);
+        System.out.println("Monsters.Player HP is now: " + Player.hp);
     }
 }
 
@@ -83,7 +85,7 @@ class Boss extends MonsterClass {
         if (chargeCount >= 2) {
             System.out.println(">>> " + this.name + " UNLEASHES BOAR SMASH! <<<");
             Player.hp -= 250; // Huge damage
-            System.out.println("Player took 250 damage!");
+            System.out.println("Monsters.Player took 250 damage!");
             isCharging = false; // Reset state
         } else {
             System.out.println(this.name + " is building up power... (Round " + chargeCount + ")");
@@ -191,7 +193,7 @@ class Asmodeus extends Boss{
         double damage = (0.25*Player.hp + atk);
         Player.hp -= (int)damage;
         System.out.println(this.name + " attacks for " + damage + " damage!");
-        System.out.println("Player HP is now: " + Player.hp);
+        System.out.println("Monsters.Player HP is now: " + Player.hp);
     }
 }
 
@@ -219,7 +221,7 @@ class Astaroth extends Boss{
             hp = max_hp;
             atk += 20;
             def += 20;
-            System.out.println("Astaroth has turned back in time and became stronger");
+            System.out.println("Monsters.Astaroth has turned back in time and became stronger");
         }
     }
 }
@@ -228,7 +230,7 @@ class Astaroth extends Boss{
 public class Monsterstuff {
     public static void main(String[] args) {
         Player user = new Player();
-        Boss currentBoss = new Astaroth("Forneus", 60, 1000, 20, 10, 0);
+        Boss currentBoss = new Astaroth("Monsters.Forneus", 60, 1000, 20, 10, 0);
         MonsterClass slime = new MonsterClass("Slime", 25, 500, 10, 5);
         while (Player.hp > 0 && currentBoss.hp > 0) { 
             currentBoss.takeTurn();
