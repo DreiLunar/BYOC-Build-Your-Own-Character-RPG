@@ -1,5 +1,7 @@
 package MonsterFiles;
 
+import Models.Player;
+
 public class BoarKing extends Boss{
     private boolean isCharging = false; 
     private int chargeCount = 0;
@@ -13,15 +15,14 @@ public class BoarKing extends Boss{
         if (isCharging) {
             handleChargingLogic(target);
         } else {
-
             if (Math.random() < 0.3) {
                 startCharging();
             } else {
                 super.attack(target); 
             }
+        }
         if(hp <=0){
             IsAlive = false;
-        }
         }
     }
 
@@ -35,12 +36,10 @@ public class BoarKing extends Boss{
         chargeCount++;
         if (chargeCount >= 2) {
             System.out.println(">>> " + this.name + " UNLEASHES BOAR SMASH! <<<");
-            target.hp -= 250; // Huge damage
-            System.out.println("Player took 250 damage!");
+            target.takeDamage(250); // Use takeDamage method instead of direct access
             isCharging = false; // Reset state
         } else {
             System.out.println(this.name + " is building up power... (Round " + chargeCount + ")");
         }
     }
 }
-

@@ -1,12 +1,16 @@
 package MonsterFiles;
 
+import Models.Player;
+
 public class Litch extends Boss{
     private int Rounds = 0;
     private boolean Curse = false;
 
-    public Litch(String name, int atk, int maxHp, int def, int sp, int phases) {
+    // CORRECTED CONSTRUCTOR - Only 5 parameters
+    public Litch(String name, int atk, int maxHp, int def, int sp) {
         super(name, atk, maxHp, def, sp);
     }
+    
     @Override
     public void takeTurn(Player target) {
         if(hp <=0){
@@ -19,14 +23,13 @@ public class Litch extends Boss{
             }
             else{
                 System.out.println("Curse has taken effect... Game over...");
-                target.hp -= target.hp;
+                target.takeDamage(target.getHp()); // Deal damage equal to current HP
             }
         } 
         else {
             startCurse(target);
             }
-
-        }
+    }
     
     private void startCurse(Player target) {
         System.out.println(this.name + " cursed player! (15 rounds till death)");
@@ -39,4 +42,3 @@ public class Litch extends Boss{
         System.out.println("You are cursed... (" + Rounds + " Rounds remaining!)");
     }
 }
-

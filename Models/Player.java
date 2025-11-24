@@ -122,5 +122,15 @@ public class Player {
     public String getName() { return name; }
     public int getHp() { return hp; }
     public int getAtk() { return atk; }
+    public int getDef() { return def; }
+    public int getMaxHp() { return maxHp; }
     public void setHealingReversed(boolean status) { this.healingReversed = status; }
+
+    public String getMove1Name() {return move1Name;}
+    public String getMove2Name() {return move2Name;}
+
+    public void setMaxHp(int maxHp) {this.maxHp = maxHp;}
+    public void setHp(int hp) {this.hp = Math.min(hp, this.maxHp);} // Don't exceed max HP
+    public void setAtk(int atk) {this.atk = atk;}
+    public void setDef(int def) {this.def = def;}
 }

@@ -1,6 +1,8 @@
 package MonsterFiles;
 
-public class Boss extends MonsterClass{
+import Models.Player;  // ADD THIS IMPORT
+
+public class Boss extends MonsterClass {
     boolean IsAlive;
 
     public Boss(String name, int atk, int maxHp, int def, int sp) {
@@ -8,8 +10,8 @@ public class Boss extends MonsterClass{
         this.IsAlive = true;
     }
     
-    public void takeTurn(Player target){
+    // Change parameter type
+    public void takeTurn(Player target) {
         super.attack(target);
     }
 }
-

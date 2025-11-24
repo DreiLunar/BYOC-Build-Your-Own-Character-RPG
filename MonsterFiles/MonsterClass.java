@@ -1,5 +1,7 @@
 package MonsterFiles;
 
+import Models.Player;
+
 public class MonsterClass {
     public String name;
     public int atk;
@@ -19,11 +21,13 @@ public class MonsterClass {
     }
 
     
+    // Change the parameter type from Player to Models.Player
     public void attack(Player target) {
         System.out.println(this.name + " attacks for " + this.atk + " damage!");
-        target.hp -= this.atk;
-        System.out.println("Player HP is now: " + target.hp);
+        target.takeDamage(this.atk);  // Use takeDamage method instead of direct access
+        // System.out.println("Player HP is now: " + target.getHp());
     }
+    
     public void takeDamage(int amount) {
         int actualDamage = Math.max(1, amount - (this.def / 10));
         this.hp -= actualDamage;
