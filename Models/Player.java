@@ -14,7 +14,7 @@ public class Player {
     private int def;
     private int sp;
 
-    private boolean healingReversed = false;
+    public boolean healingReversed = false;
 
     public Player(String name) {
         this.name = name;
@@ -108,7 +108,8 @@ public class Player {
     }
 
     public void takeDamage(int amount) {
-        int actualDamage = Math.max(1, amount - (this.def / 10));
+        int randomConst = (int)(Math.random() * 16) + 50;
+        int actualDamage = (int)Math.max(1, amount/ (1 + (double)this.def/randomConst));
         this.hp -= actualDamage;
         if (this.hp < 0) this.hp = 0;
 

@@ -2,20 +2,16 @@ package MonsterFiles;
 import Models.Player;
 
 public class CommonEnemies extends MonsterClass{
-    boolean IsAlive;
+
 
     public CommonEnemies(String name, String region, int randomizer, int stage) {
         super(name, 0,0,0,0); 
-        this.IsAlive = true;
         
         EnemyStats(region, stage);
     }
-    
+    @Override
     public void takeTurn(Player target) {
         super.attack(target);
-        if(this.hp <= 0){
-            IsAlive = false;
-        }
     }
 
     public static String EnemyName(String region, int randomizer) {
@@ -56,22 +52,22 @@ public class CommonEnemies extends MonsterClass{
         // VERY EASY STATS
         switch(region){
             case "Grasslands":
-                atk = 15;  // Very low attack
-                hp = 300;  // Very low HP
-                def = 10;  // Low defense
-                sp = 5;    
+                atk = 90;   
+                hp = 800;   
+                def = 20;   // Almost no armor
+                sp = 10;
                 break;
             case "Dungeons":
-                atk = 25; 
-                hp = 500;
-                def = 15;
-                sp = 8;    
+                atk = 170; 
+                hp = 1200; 
+                def = 30;
+                sp = 15;  
                 break;
             default: // Barren Lands
-                atk = 35; 
-                hp = 700;
-                def = 20;
-                sp = 10;  
+                atk = 280; 
+                hp = 2000; 
+                def = 35;
+                sp = 20;
                 break; 
         }
         stats(atk, hp, def, sp, stage);
@@ -79,9 +75,9 @@ public class CommonEnemies extends MonsterClass{
 
     private void stats(int baseAtk, int baseHp, int baseDef, int baseSp, int stage){
         // Minimal scaling - barely increases
-        this.atk = baseAtk + (stage * 1);  // +1 ATK per stage
+        this.atk = baseAtk + (stage * 5);  // +5 ATK per stage
         this.def = baseDef + (stage * 1);  // +1 DEF per stage  
-        this.maxHp = baseHp + (stage * 20); // +20 HP per stage
+        this.maxHp = baseHp + (stage * 50); // +50 HP per stage
         this.hp = this.maxHp;
         this.sp = baseSp;
     }

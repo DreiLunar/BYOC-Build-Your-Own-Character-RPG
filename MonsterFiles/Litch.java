@@ -13,9 +13,6 @@ public class Litch extends Boss{
     
     @Override
     public void takeTurn(Player target) {
-        if(hp <=0){
-            IsAlive = false;
-        }
         if (Curse) {
             if(Rounds > 0){
             handleCurse(target);
