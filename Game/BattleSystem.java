@@ -3,8 +3,6 @@ package Game;
 import Models.ConsoleEffect;
 import Models.Player;
 import MonsterFiles.MonsterClass;
-import MonsterFiles.Boss;
-import MonsterFiles.CommonEnemies;
 import java.util.Scanner;
 
 public class BattleSystem {
@@ -15,7 +13,7 @@ public class BattleSystem {
         ConsoleEffect.pause(1000);
         System.out.println(player.getName() + " vs " + enemy.name);
         
-        while (player.isAlive() && enemy.hp > 0) {
+        while (player.isAlive() && enemy.isAlive()) {
             // Player turn
             System.out.println("\n--- Your Turn ---");
             boolean playerActionTaken = playerTurn(player, enemy);
@@ -85,7 +83,7 @@ public class BattleSystem {
     switch (moveName.toLowerCase()) {
         case "slash":
             int slashDamage = (int)(player.getAtk() * 1.8);
-            enemy.takeDamage(slashDamage);
+            enemy.takeDamage(slashDamage);  
             // Remove duplicate message - takeDamage() already prints damage
             break;
             
@@ -185,12 +183,6 @@ public class BattleSystem {
 }
     
     private static void enemyTurn(Player player, MonsterClass enemy) {
-        if (enemy instanceof Boss) {
-            ((Boss) enemy).takeTurn(player);
-        } else if (enemy instanceof CommonEnemies) {
-            ((CommonEnemies) enemy).takeTurn(player);
-        } else {
-            enemy.attack(player);
-        }
+        enemy.takeTurn(player);
     }
 }

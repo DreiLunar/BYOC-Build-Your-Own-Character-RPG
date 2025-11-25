@@ -11,8 +11,6 @@ public class Dantalion extends Boss{
     @Override
     public void takeTurn(Player target) {
         super.attack(target);
-        if(hp <=0){
-            IsAlive = false;
-        }
+        target.healingReversed = true;
     }
 }

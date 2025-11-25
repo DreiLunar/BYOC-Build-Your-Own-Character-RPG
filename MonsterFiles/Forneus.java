@@ -23,9 +23,6 @@ public class Forneus extends Boss{
             System.out.println("Affected by magic, your soul is being rotten away...");
             SoulRot = true;
         }
-        if(hp <=0){
-            IsAlive = false;
-        }
     }
     
     public void SoulRotDamage(Player target){

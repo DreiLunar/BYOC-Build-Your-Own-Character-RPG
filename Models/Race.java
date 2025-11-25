@@ -22,12 +22,12 @@ public class Race {
 
     //Races stats
     private static final Race[] ALL_RACES = new Race[] {
-            new Race("Human", 1000, 50, 50, 25),
-            new Race("Elf", 1000, 65, 30, 35),
-            new Race("Dwarf", 1500, 30, 65, 20),
-            new Race("Angel", 2000, 35, 80, 25),
-            new Race("Demon", 800, 80, 35, 50),
-            new Race("God", 2000, 100, 100, 50)
+            new Race("Human", 2000, 200, 10,  30),
+            new Race("Elf", 1900, 260, 5,  60),
+            new Race("Dwarf", 3500, 150, 20,  10),
+            new Race("Angel", 2500, 220, 15,  30),
+            new Race("Demon", 1500, 300, 5,  50),
+            new Race("God", 4000, 350, 40, 50)
     };
 
     public static Race getRandomRace() {

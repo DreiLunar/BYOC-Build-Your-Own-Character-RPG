@@ -1,7 +1,6 @@
 package Models;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Weapon {
     private String weaponName, move1Name, move2Name;
@@ -26,13 +25,13 @@ public class Weapon {
     public int getSp() {return sp;}
 
     private static final Weapon[] All_WEAPONS = {
-            new Weapon("Longsword", 500, 5, 10, 0, "Slash", "Parry"),
-            new Weapon("Dagger", 0, 5, 5, 10, "Stab", "Quicken"),
-            new Weapon("Bow", 0, 10, 0, 5, "Arrow Shot", "Lock in"),
-            new Weapon("Fire Element", 0, 5, 0, 5, "Ember", "Flame Wall"),
-            new Weapon("Water Element", 500, 5, 0, 0, "Water Jet", "Fountain of Life"),
-            new Weapon("Earth Element", 250, 0, 10, 0, "Landslide", "Earth Wall"),
-            new Weapon("Air Element", 0, 5, 0, 10, "Air Slash", "Wind Chant")
+            new Weapon("Longsword", 500, 170, 10, 5, "Slash", "Parry"),
+            new Weapon("Dagger", 1000, 150, 8, 40, "Stab", "Quicken"),
+            new Weapon("Bow", 0, 200, 5, 15, "Arrow Shot", "Lock in"),
+            new Weapon("Fire Element", 0, 270, 3, 10, "Ember", "Flame Wall"),
+            new Weapon("Water Element", 1500, 130, 10, 5, "Water Jet", "Fountain of Life"),
+            new Weapon("Earth Element", 750, 130, 20, 0, "Landslide", "Earth Wall"),
+            new Weapon("Air Element", 0, 170, 5, 80, "Air Slash", "Wind Chant")
     };
 
     public static Weapon getRandomWeapon() {

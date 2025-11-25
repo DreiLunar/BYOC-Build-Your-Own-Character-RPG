@@ -1,7 +1,7 @@
 package Game;
 
-import Models.Player;
 import Models.ConsoleEffect;
+import Models.Player;
 import MonsterFiles.*;
 import java.util.Scanner;
 
@@ -74,7 +74,7 @@ public class MainGame {
             
             // Only heal if player took damage and isn't at full health
             if (player.getHp() < player.getMaxHp()) {
-                int healAmount = player.getMaxHp() / 10;
+                int healAmount = player.getMaxHp() / 30;
                 int actualHeal = Math.min(healAmount, player.getMaxHp() - player.getHp());
                 player.heal(actualHeal);
                 System.out.println("You recover " + actualHeal + " HP after the battle!");
@@ -84,7 +84,7 @@ public class MainGame {
         }
         
         // Heal 25% before boss
-        int bossHealAmount = player.getMaxHp() / 4;
+        int bossHealAmount = player.getMaxHp() / 8;
         player.heal(bossHealAmount);
         System.out.println("\nYou prepare for the boss and recover " + bossHealAmount + " HP!");
         
@@ -111,8 +111,10 @@ public class MainGame {
     
     private static void levelUpPlayer(Player player, int battleNumber, int regionIndex) {
         // Calculate stat increases based on region and battle number
-        int baseStatIncrease = 5 + (regionIndex * 2);
-        int pointsToSpend = 2 + regionIndex;
+        int baseAtkIncrease = 5 + (regionIndex * 2);
+        int baseDefIncrease = 1 + (regionIndex * 2);
+        int baseHpIncrease = 50 + (regionIndex * 2);
+        int pointsToSpend = 2;
         
         System.out.println("\n LEVEL UP! ");
         System.out.println("Battle " + battleNumber + " completed!");
@@ -123,14 +125,14 @@ public class MainGame {
         int oldDef = player.getDef();
         
         // Apply automatic increases FIRST
-        player.setMaxHp(oldMaxHp + baseStatIncrease);
-        player.setAtk(oldAtk + baseStatIncrease);
-        player.setDef(oldDef + baseStatIncrease);
+        player.setMaxHp(oldMaxHp + baseHpIncrease);
+        player.setAtk(oldAtk + baseAtkIncrease);
+        player.setDef(oldDef + baseDefIncrease);
         
         System.out.println("Automatic stat increases:");
-        System.out.println("  +" + baseStatIncrease + " Max HP (" + oldMaxHp + " -> " + player.getMaxHp() + ")");
-        System.out.println("  +" + baseStatIncrease + " ATK (" + oldAtk + " -> " + player.getAtk() + ")");
-        System.out.println("  +" + baseStatIncrease + " DEF (" + oldDef + " -> " + player.getDef() + ")");
+        System.out.println("  +" + baseHpIncrease + " Max HP (" + oldMaxHp + " -> " + player.getMaxHp() + ")");
+        System.out.println("  +" + baseAtkIncrease + " ATK (" + oldAtk + " -> " + player.getAtk() + ")");
+        System.out.println("  +" + baseDefIncrease + " DEF (" + oldDef + " -> " + player.getDef() + ")");
         
         // Store stats AFTER automatic increases (for bonus points display)
         int afterAutoAtk = player.getAtk();
@@ -158,9 +160,9 @@ public class MainGame {
         
         while (points > 0) {
             System.out.println("\nChoose where to spend your points:");
-            System.out.println("1. HP (+10 Max HP per point) - Current: " + player.getMaxHp());
-            System.out.println("2. ATK (+2 ATK per point) - Current: " + player.getAtk());
-            System.out.println("3. DEF (+2 DEF per point) - Current: " + player.getDef());
+            System.out.println("1. HP (+100 Max HP per point) - Current: " + player.getMaxHp());
+            System.out.println("2. ATK (+10 ATK per point) - Current: " + player.getAtk());
+            System.out.println("3. DEF (+1 DEF per point) - Current: " + player.getDef());
             System.out.println("4. Skip remaining points");
             System.out.print("Enter your choice (1-4): ");
             
@@ -170,24 +172,24 @@ public class MainGame {
                 switch (choice) {
                     case 1:
                         int oldHp = player.getMaxHp();
-                        player.setMaxHp(oldHp + 10);
-                        player.setHp(player.getHp() + 10);
+                        player.setMaxHp(oldHp + 100);
+                        player.setHp(player.getHp() + 100);
                         points--;
-                        System.out.println("+10 Max HP! (" + oldHp + " → " + player.getMaxHp() + ") - " + points + " points remaining");
+                        System.out.println("+100 Max HP! (" + oldHp + " -> " + player.getMaxHp() + ") - " + points + " points remaining");
                         break;
                         
                     case 2:
                         int oldAtk = player.getAtk();
-                        player.setAtk(oldAtk + 2);
+                        player.setAtk(oldAtk + 10);
                         points--;
-                        System.out.println("+2 ATK! (" + oldAtk + " → " + player.getAtk() + ") - " + points + " points remaining");
+                        System.out.println("+10 ATK! (" + oldAtk + " -> " + player.getAtk() + ") - " + points + " points remaining");
                         break;
                         
                     case 3:
                         int oldDef = player.getDef();
-                        player.setDef(oldDef + 2);
+                        player.setDef(oldDef + 1);
                         points--;
-                        System.out.println("+2 DEF! (" + oldDef + " → " + player.getDef() + ") - " + points + " points remaining");
+                        System.out.println("+1 DEF! (" + oldDef + " -> " + player.getDef() + ") - " + points + " points remaining");
                         break;
                         
                     case 4:
@@ -210,45 +212,51 @@ public class MainGame {
             case "Grasslands" -> 6;
             case "Dungeons" -> 9;
             case "Barren Lands" -> 12;
-            case "Path to the End" -> 4; // 4 generals
-            case "Beginning of the End" -> 1; // Final boss
+            case "Path to the End" -> 0; // 4 generals
+            case "Beginning of the End" -> 0; // Final boss
             default -> 3;
         };
     }
     
     private static MonsterClass createEnemy(String region, int battleNumber) {
+        if (region.equals("Path to the End")) {
+            return createPathBoss(battleNumber);
+        }
+        else{
         int randomizer = (int)(Math.random() * 5) + 1;
         String name = CommonEnemies.EnemyName(region, randomizer);
         CommonEnemies enemy = new CommonEnemies(name, region, randomizer, battleNumber);
         return enemy;
+        }
     }
     
     private static Boss createBoss(String region, int regionIndex) {
         return switch (region) {
-            case "Grasslands" -> new BoarKing("Boar King", 30, 800, 20, 8);
-            case "Dungeons" -> new Litch("Litch", 40, 1000, 25, 10);
-            case "Barren Lands" -> new SkelKing("Undead King", 25, 1500, 30, 6);
+            case "Grasslands" -> new BoarKing("Boar King", 200, 3500, 50, 8);
+            case "Dungeons" -> new Litch("Litch", 360, 5000, 60, 10);
+            case "Barren Lands" -> new SkelKing("Undead King", 420, 6500, 65, 6);
             case "Path to the End" -> createPathBoss(regionIndex);
-            case "Beginning of the End" -> new Astaroth("The Corrupted Being", 50, 2000, 35, 12);
+            case "Beginning of the End" -> new FinalBoss("The Corrupted Being", 580, 9000, 75, 15);
             default -> new BoarKing("Default Boss", 20, 600, 15, 5);
         };
     }
 
     private static Boss createPathBoss(int regionIndex) {
         return switch (regionIndex - 3) {
-            case 0 -> new Forneus("Marshal of the End - Forneus", 35, 1200, 25, 8);
-            case 1 -> new Asmodeus("Admiral of the End - Asmodeus", 45, 1000, 20, 12);
-            case 2 -> new Dantalion("General of the End - Dantalion", 30, 1100, 30, 7);
-            case 3 -> new Astaroth("Grand Duke of the End - Astaroth", 40, 1300, 25, 9);
-            default -> new Forneus("Marshal of the End - Forneus", 35, 1200, 25, 8);
+            case 0 -> new Forneus("Marshal of the End - Forneus", 420, 6000, 80, 8);
+            case 1 -> new Asmodeus("Admiral of the End - Asmodeus", 550, 7000, 65, 12);
+            case 2 -> new Dantalion("General of the End - Dantalion", 500, 5500, 100, 8);
+            case 3 -> new Astaroth("Grand Duke of the End - Astaroth", 350, 4000, 65, 8);
+            default -> new Forneus("Marshal of the End - Forneus", 250, 15000, 120, 12);
         };
     }
     
     private static void giveRegionRewards(Player player, int regionIndex) {
         switch (regionIndex) {
             case 0: // Grasslands
-                System.out.println("You gained an ability upgrade from Boar King! wala pa ");
+                System.out.println("You gained an ability upgrade from Boar King!");
                 // Implement ability upgrade logic
+
                 break;
             case 1: // Dungeons
                 System.out.println("You gained an ability upgrade from Litch!");

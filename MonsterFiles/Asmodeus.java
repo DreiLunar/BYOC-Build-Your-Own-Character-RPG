@@ -13,9 +13,6 @@ public class Asmodeus extends Boss{
         if (Math.random() < 0.3) {
             hpBasedDamage(target);
         } 
-        if(hp <=0){
-            IsAlive = false;
-        }
     }
 
     public void hpBasedDamage(Player target){
