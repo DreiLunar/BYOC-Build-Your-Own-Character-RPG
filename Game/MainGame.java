@@ -40,11 +40,7 @@ public class MainGame {
                 break;
             }
         }
-        
-        if (player.isAlive() && currentRegion >= regions.length) {
-            System.out.println("\n🏆 CONGRATULATIONS! YOU SAVED THE WORLD! 🏆");
-        }
-        
+
         sc.close();
     }
     
@@ -53,9 +49,12 @@ public class MainGame {
         System.out.println("ENTERING: " + region.toUpperCase());
         System.out.println("=".repeat(50));
 
-        //Calls the path to the end region(special stage)
+        // Special handling for unique regions
         if (region.equals("Path to the End")) {
             return playPathToTheEndRegion(player, regionIndex);
+        }
+        if (region.equals("Beginning of the End")) {
+            return playFinalBossRegion(player, region, regionIndex);
         }
         int totalBattles = getBattlesForRegion(region);
         
@@ -138,6 +137,27 @@ public class MainGame {
             ConsoleEffect.pause(1000);
         }
         return true; //Player won the region
+    }
+
+    private static boolean playFinalBossRegion(Player player, String region, int regionIndex) {
+        // Heal before the final battle
+        int bossHealAmount = player.getMaxHp() / 2; // A larger heal for the final fight
+        player.heal(bossHealAmount);
+        System.out.println("\nYou gather all your strength for the final fight and recover " + bossHealAmount + " HP!");
+
+        ConsoleEffect.pause(1000);
+        System.out.println("\n⚔️  THE FINAL BATTLE IS AT HAND! ⚔️");
+        Boss boss = createBoss(region, regionIndex);
+        ConsoleEffect.pause(1500);
+        System.out.println(boss.name + " looks down on you from his throne");
+        ConsoleEffect.pause(2000);
+
+        boolean bossDefeated = BattleSystem.battle(player, boss);
+
+        if (bossDefeated) {
+            System.out.println("\n🏆 CONGRATULATIONS! YOU SAVED THE WORLD! 🏆");
+        }
+        return bossDefeated;
     }
 
     private static void levelUpPlayer(Player player, int battleNumber, int regionIndex) {
