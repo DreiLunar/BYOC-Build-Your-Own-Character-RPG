@@ -52,7 +52,8 @@ public class MainGame {
         System.out.println("\n" + "=".repeat(50));
         System.out.println("ENTERING: " + region.toUpperCase());
         System.out.println("=".repeat(50));
-        
+
+        //Calls the path to the end region(special stage)
         if (region.equals("Path to the End")) {
             return playPathToTheEndRegion(player, regionIndex);
         }
@@ -117,7 +118,7 @@ public class MainGame {
         ConsoleEffect.pause(1500);
 
         for (int i = 0; i < 4; i++) {
-            int preBossHeal = player.getMaxHp() / 10;
+            int preBossHeal = player.getMaxHp() / 3;
             player.heal(preBossHeal);
             System.out.println("\n You steel yourself for the next challenge and recover " + preBossHeal + " HP!");
             ConsoleEffect.pause(1000);
