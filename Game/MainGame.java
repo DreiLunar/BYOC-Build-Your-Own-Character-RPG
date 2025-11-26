@@ -52,7 +52,10 @@ public class MainGame {
         System.out.println("\n" + "=".repeat(50));
         System.out.println("ENTERING: " + region.toUpperCase());
         System.out.println("=".repeat(50));
-        
+
+        if (region.equals("Path to the End")) {
+            return playPathToTheEndRegion(player, regionIndex);
+        }
         int totalBattles = getBattlesForRegion(region);
         
         // Regular enemy battles
@@ -107,6 +110,33 @@ public class MainGame {
         }
 
         return bossDefeated;
+    }
+
+    private static boolean playPathToTheEndRegion(Player player, int regionIndex) {
+        System.out.println("You must defeat the four generals of the end to proceed!");
+        ConsoleEffect.pause(1500);
+
+        for (int i = 0; i < 4; i++) {
+            int preBossHeal = player.getMaxHp() / 10;
+            player.heal(preBossHeal);
+            System.out.println("\n You steel yourself for the next challenge and recover " + preBossHeal + " HP!");
+            ConsoleEffect.pause(1000);
+
+            System.out.println("\n⚔️  BOSS BATTLE INCOMING! (" + (i + 1) + "/4) ⚔️");
+            ConsoleEffect.pause(1000);
+            Boss general = createPathBoss(i + 1); //for getting the generals 1 2 3 4
+            ConsoleEffect.pause(1500);
+            System.out.println("The " + general.name + " blocks your path!");
+            ConsoleEffect.pause(2000);
+
+            boolean generalDefeated = BattleSystem.battle(player, general);
+            if (!generalDefeated) {
+                return false; // Player died
+            }
+            System.out.println("\n✨ " + general.name + " has been vanquished! ✨");
+            ConsoleEffect.pause(1000);
+        }
+        return true; //Player won the region
     }
     
     private static void levelUpPlayer(Player player, int battleNumber, int regionIndex) {
@@ -235,18 +265,20 @@ public class MainGame {
             case "Grasslands" -> new BoarKing("Boar King", 200, 3500, 50, 8);
             case "Dungeons" -> new Litch("Litch", 360, 5000, 60, 10);
             case "Barren Lands" -> new SkelKing("Undead King", 420, 6500, 65, 6);
-            case "Path to the End" -> createPathBoss(regionIndex);
+            case "Path to the End" -> {
+                yield new Boss("Path general", 1, 1, 1, 1);
+            }
             case "Beginning of the End" -> new FinalBoss("The Corrupted Being", 580, 9000, 75, 15);
             default -> new BoarKing("Default Boss", 20, 600, 15, 5);
         };
     }
 
-    private static Boss createPathBoss(int regionIndex) {
-        return switch (regionIndex - 3) {
-            case 0 -> new Forneus("Marshal of the End - Forneus", 420, 6000, 80, 8);
-            case 1 -> new Asmodeus("Admiral of the End - Asmodeus", 550, 7000, 65, 12);
-            case 2 -> new Dantalion("General of the End - Dantalion", 500, 5500, 100, 8);
-            case 3 -> new Astaroth("Grand Duke of the End - Astaroth", 350, 4000, 65, 8);
+    private static Boss createPathBoss(int generalNumber) {
+        return switch (generalNumber) {
+            case 1 -> new Forneus("Marshal of the End - Forneus", 420, 6000, 80, 8);
+            case 2 -> new Asmodeus("Admiral of the End - Asmodeus", 550, 7000, 65, 12);
+            case 3 -> new Dantalion("General of the End - Dantalion", 500, 5500, 100, 8);
+            case 4 -> new Astaroth("Grand Duke of the End - Astaroth", 350, 4000, 65, 8);
             default -> new Forneus("Marshal of the End - Forneus", 250, 15000, 120, 12);
         };
     }
