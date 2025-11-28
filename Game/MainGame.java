@@ -69,8 +69,11 @@ public class MainGame {
             boolean playerWon = BattleSystem.battle(player, enemy);
             
             if (!playerWon) {
+    
                 return false; // Player died
             }
+
+            player.resetBuff();
             
             // Level up and heal after successful battle
             levelUpPlayer(player, battleNumber, regionIndex);
@@ -134,6 +137,8 @@ public class MainGame {
                 return false; // Player died
             }
             System.out.println("\n✨ " + general.name + " has been vanquished! ✨");
+            givePathRewards(player, i+1);
+            levelUpPlayer(player, i+1, i+1);
             ConsoleEffect.pause(1000);
         }
         return true; //Player won the region
@@ -305,20 +310,49 @@ public class MainGame {
     private static void giveRegionRewards(Player player, int regionIndex) {
         switch (regionIndex) {
             case 0: // Grasslands
-                System.out.println("You gained an ability upgrade from Boar King!");
+                player.upgradeAbility(0);
+                System.out.println("The Boar king dropped a strengthening gauntlet! Your physical strikes now carry devastating force.");
                 // Implement ability upgrade logic
 
                 break;
             case 1: // Dungeons
-                System.out.println("You gained an ability upgrade from Litch!");
+                System.out.println("You picked up a mysterious artifact from the Litch's remains! Your elemental spells have evolved into tools of destruction.");
+                player.upgradeAbility(1);
                 break;
             case 2: // Barren Lands
-                System.out.println("You gained stats from Undead King!");
-                // Implement stat increase
+                System.out.println("As the Undead King withers, his remains contain an ancienct totem that improves your focus! Buffs (Wind Chant) last 1 turn longer.");
+                player.upgradeAbility(2);
                 break;
-            case 3: // Path to the End
-                System.out.println("You gained weapon/ability upgrades from the generals!");
+            }
+        }
+    private static void givePathRewards(Player player, int generalNumber) {
+        switch (generalNumber) {
+            case 1: // Forneus
+                player.upgradeAbility(1);
+                System.out.println("He kneels in despair, screeching with an otherworldly agony.");
+                System.out.println("Defeating Forneus granted you the Marshal's Glyph! A surge of raw mana emboldens your body.");
                 break;
+
+            case 2: // Asmodeus
+                System.out.println("Asmodeus, amazed by your performance, he granted you the Admirals's Edge! Your weapon hums with newfound power.");
+                player.upgradeAbility(0);
+                break;
+                
+            case 3: // Dantalion
+                System.out.println("Dantalion bows. The General whose sword once caused the apocalypse recognizes your strength.");
+                System.out.println("He grants you the General's Resolve! Your spirit is unyielding; your battle enchantments now last longer");
+                player.upgradeAbility(2);
+                break;
+
+            case 4: // Astaroth
+                System.out.println("Almighty as one can be, everyone must fall. The once Great Duke now yields to the inevitable flow of time.");
+                System.out.println("Astaroth grants you the **Authority of the End**!");
+                System.out.println(">> Your destructive potential has transcended limits, while your battle enchantments now defy the very flow of time. <<");
+                player.upgradeAbility(2);
+                player.upgradeAbility(1);
+                player.upgradeAbility(0);
+                break;
+
         }
     }
 }

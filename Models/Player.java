@@ -15,6 +15,12 @@ public class Player {
     private int sp;
 
     public boolean healingReversed = false;
+    public boolean isParrying = false;
+    public boolean isDefending = false;
+    public int wallHp = 0;
+    public int chantDuration = 0;
+    public double strengthMult = 1.0;
+    public double magicMult = 1.0;
 
     public Player(String name) {
         this.name = name;
@@ -109,10 +115,39 @@ public class Player {
 
     public void takeDamage(int amount) {
         int randomConst = (int)(Math.random() * 16) + 50;
-        int actualDamage = (int)Math.max(1, amount/ (1 + (double)this.def/randomConst));
-        this.hp -= actualDamage;
+        int rawDamage = (int)Math.max(1, amount/ (1 + (double)this.def/randomConst));
+        int actualDamage;
+        if(this.isParrying){
+            System.out.println(">>> Clang! You have parried the attack! <<<");
+            actualDamage = (int)(rawDamage *0.70);
+            this.isParrying = false;
+        }
+        else if(this.isDefending){
+            System.out.println(">>> Hiss! Some of the attack has scorched in flames! <<<");
+            actualDamage = (int)(rawDamage *0.50);
+            this.isDefending = false;
+        }
+        else if(this.wallHp > 0){
+            System.out.println(">>> Stand ground for as this wall will take the damage! <<<");
+            System.out.println("Wall Hp: " + wallHp);
+            if(wallHp > rawDamage){
+            wallHp -= rawDamage;
+            actualDamage = 0;
+            System.out.println("The Earth wall has absorbed the hit!");
+            System.out.println("Wall Hp: " + wallHp);
+            }
+            else{
+                System.out.println("THE EARTH WALL SHATTERED!");
+                int overDamage = rawDamage - this.wallHp;
+                this.wallHp = 0;
+                actualDamage = overDamage;
+            }
+        }
+        else{
+            actualDamage = rawDamage;
+        }
         if (this.hp < 0) this.hp = 0;
-
+        this.hp -= actualDamage;
         System.out.println(">> " + name + " took " + actualDamage + " damage! (HP: " + hp + "/" + maxHp + ")");
     }
 
@@ -120,9 +155,49 @@ public class Player {
         return this.hp > 0;
     }
 
+    public void castWindChant(){
+        this.chantDuration = 3;
+        System.out.println("You chant with the wind! (attack increased for 3 rounds)");
+    }
+    
+    public void buffTimer(){
+        if(this.chantDuration > 0){
+            this.chantDuration--;
+            System.out.println("Blessed by the wind: " + this.chantDuration + " rounds remaining!");
+            
+            if(this.chantDuration == 0){
+                System.out.println("The autumn breeze subsides. Your attack returns to normal.");
+            }
+        }
+    }
+
+    public void resetBuff(){
+        this.chantDuration = 0;
+    }
+
+    public void upgradeAbility(int choice) {
+        switch(choice) {
+            case 0:
+                this.strengthMult += 0.3; 
+                break;
+
+            case 1: 
+                this.magicMult += 0.3; 
+                break;
+
+            case 2: 
+                this.chantDuration += 1; 
+                break;
+        }
+    }
+
     public String getName() { return name; }
     public int getHp() { return hp; }
-    public int getAtk() { return atk; }
+    public int getAtk() { int currentAtk = this.atk;
+        if(this.chantDuration >0){
+            currentAtk = (int)(currentAtk * 1.3);
+        }
+        return currentAtk; }
     public int getDef() { return def; }
     public int getMaxHp() { return maxHp; }
     public void setHealingReversed(boolean status) { this.healingReversed = status; }

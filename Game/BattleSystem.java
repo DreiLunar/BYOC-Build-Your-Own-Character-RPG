@@ -25,7 +25,7 @@ public class BattleSystem {
                 System.out.println(">>> " + enemy.name + " defeated! <<<");
                 return true;
             }
-            
+            player.buffTimer();
             // Enemy turn
             System.out.println("\n--- " + enemy.name + "'s Turn ---");
             enemyTurn(player, enemy);
@@ -82,39 +82,75 @@ public class BattleSystem {
     
     switch (moveName.toLowerCase()) {
         case "slash":
-            int slashDamage = (int)(player.getAtk() * 1.8);
+            int slashDamage = (int)(player.getAtk() * (player.strengthMult + 0.6));
             enemy.takeDamage(slashDamage);  
             // Remove duplicate message - takeDamage() already prints damage
             break;
             
         case "stab":
-            int stabDamage = (int)(player.getAtk() * 1.6);
+            int stabDamage = (int)(player.getAtk() * (player.strengthMult + 0.4));
             enemy.takeDamage(stabDamage);
+            if(Math.random()< 0.30){
+                
+                enemy.applyPoison(3);
+            }
             break;
             
         case "arrow shot":
-            int arrowDamage = (int)(player.getAtk() * 1.7);
+            int arrowDamage = (int)(player.getAtk() * (player.strengthMult + 0.8));
             enemy.takeDamage(arrowDamage);
+            
             break;
             
         case "ember":
-            int emberDamage = (int)(player.getAtk() * 1.4);
+            int emberDamage = (int)(player.getAtk() * (player.magicMult + 0.4));
             enemy.takeDamage(emberDamage);
+            if(Math.random()< 0.30){
+                
+                enemy.applyBurn(4);
+            }
+            
             break;
             
         case "water jet":
-            int waterDamage = (int)(player.getAtk() * 1.5);
+            int waterDamage = (int)(player.getAtk() * (player.magicMult + 0.2) + enemy.getMaxHp() * 0.08);
             enemy.takeDamage(waterDamage);
             break;
             
         case "landslide":
-            int landslideDamage = (int)(player.getAtk() * 2.0);
+            int landslideDamage = (int)(player.getAtk() * (player.magicMult + 0.5));
             enemy.takeDamage(landslideDamage);
+                if(Math.random()< 0.20){
+                
+                enemy.isStunned = true;
+                System.out.println(">>> " + enemy.name + " was STUNNED! <<<");
+            }
             break;
             
         case "air slash":
-            int airDamage = (int)(player.getAtk() * 1.7);
-            enemy.takeDamage(airDamage);
+            int airDamage = (int)(player.getAtk() * (player.magicMult - 0.1));
+            int airslash = (int)(Math.random() * 5) + 1;
+            switch(airslash){
+                case 1:
+                    enemy.takeDamage(airDamage);
+                    break;
+                case 2:
+                    enemy.takeDamage(airDamage);
+                    enemy.takeDamage(airDamage);
+                    break;
+                case 3:
+                    enemy.takeDamage(airDamage);
+                    enemy.takeDamage(airDamage);
+                    enemy.takeDamage(airDamage);
+                    break;
+                default:
+                    enemy.takeDamage(airDamage);
+                    enemy.takeDamage(airDamage);
+                    enemy.takeDamage(airDamage);
+                    enemy.takeDamage(airDamage);
+                    break;
+            };
+            
             break;
             
         default:
@@ -123,7 +159,7 @@ public class BattleSystem {
             break;
     }
     ConsoleEffect.pause(1000);
-}
+    }
     
     private static void useWeaponMove2(Player player, MonsterClass enemy) {
     String moveName = player.getMove2Name();
@@ -132,46 +168,49 @@ public class BattleSystem {
     switch (moveName.toLowerCase()) {
         case "parry":
             System.out.println("You enter a defensive stance! (Next damage reduced by 30%)");
-            int parryDamage = (int)(player.getAtk() * 0.8);
+            player.isParrying = true;
+            int parryDamage = (int)(player.getAtk() * (player.strengthMult - 0.2));
             enemy.takeDamage(parryDamage);
             break;
             
         case "quicken":
-            System.out.println("You move with blinding speed!");
+            int quickenRandomizer = (int)((Math.random()*3)+5);
             int quickDamage1 = player.getAtk();
-            int quickDamage2 = (int)(player.getAtk() * 0.5);
-            enemy.takeDamage(quickDamage1);
-            enemy.takeDamage(quickDamage2);
+            System.out.println("You move with blinding speed and attacks the opponent " + quickenRandomizer +" times!");
+            for (int i =1; i <= quickenRandomizer; i++) {
+                enemy.takeDamage((int)(quickDamage1 * ((player.strengthMult)/i+0.3)));   
+            }
             break;
             
         case "lock in":
             System.out.println("You focus for a precise shot!");
-            int focusDamage = (int)(player.getAtk() * 2.2);
+            int critRandomizer = (int)((Math.random() * 3)+4); 
+            int focusDamage = (int)(player.getAtk() * ((player.strengthMult + 1.0) + critRandomizer));
             enemy.takeDamage(focusDamage);
             break;
             
         case "flame wall":
             System.out.println("You create a protective wall of flames!");
-            int flameDamage = (int)(player.getAtk() * 1.3);
-            enemy.takeDamage(flameDamage);
+            enemy.applyBurn(1);
+            player.isDefending = true;
             break;
             
         case "fountain of life":
-            int healAmount = (int)(player.getHp() * 0.4);
+            int healAmount = (int)(player.getMaxHp() * 0.15);
             player.heal(healAmount);
             System.out.println("Fountain of Life restores " + healAmount + " HP!");
             break;
             
         case "earth wall":
+            int earthWallHp = (int)(player.getMaxHp() *0.5);
             System.out.println("You raise a sturdy earth barrier! (Defense increased)");
-            int earthDamage = (int)(player.getAtk() * 1.1);
-            enemy.takeDamage(earthDamage);
+            player.wallHp = earthWallHp;
             break;
             
         case "wind chant":
-            System.out.println("You chant with the wind! (Speed and attack increased)");
-            int windDamage = (int)(player.getAtk() * 1.6);
-            enemy.takeDamage(windDamage);
+            
+            player.castWindChant();
+
             break;
             
         default:
@@ -183,6 +222,12 @@ public class BattleSystem {
 }
     
     private static void enemyTurn(Player player, MonsterClass enemy) {
+        if(!enemy.isStunned){
         enemy.takeTurn(player);
+        }
+        else {
+        System.out.println("🚫 " + enemy.name + " is stunned and cannot move!");
+        enemy.isStunned = false;
+    }
     }
 }
