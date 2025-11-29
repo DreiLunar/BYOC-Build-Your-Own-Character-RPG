@@ -178,7 +178,7 @@ public class BattleSystem {
             case "lock in":
                 System.out.println(TextColor.status("You focus for a precise shot!"));
                 int critRandomizer = (int)((Math.random() * 3)+4)/10; 
-                int focusDamage = (int)(player.getAtk() * ((player.strengthMult + 1) + critRandomizer));
+                int focusDamage = (int)(player.getAtk() * ((player.strengthMult + 1.0) + critRandomizer));
                 enemy.takeDamage(focusDamage);
                 break;
                 
