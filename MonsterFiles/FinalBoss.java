@@ -1,5 +1,6 @@
 package MonsterFiles;
 
+import Models.ConsoleEffect;
 import Models.Player;
 import Models.TextColor;
 
@@ -41,12 +42,16 @@ public class FinalBoss extends Boss{
         if (this.hp <= 0) {
             this.hp = 0;
             System.out.println(TextColor.enemyDamage(">> " + this.name + " took " + actualDamage + " damage! (HP: " + this.hp + "/" + this.maxHp + ")"));
+            if  (resurrect == 3){
+                ConsoleEffect.type("You lower your weapon, expecting relief. But the hair on the back of your neck stands up.",ConsoleEffect.NORMAL);
+                ConsoleEffect.type("The shadows violently recoil and re-form... HE HAS RESURRECTED!",ConsoleEffect.NORMAL);
+            }
             if (resurrect > 0) {
                 Ressurection();
             } else {
                 this.hp = 0;
                 this.IsAlive = false;
-                System.out.println("Astaroth has fallen permanently!");
+                System.out.println("The Corrupted Being has fallen permanently!");
             }
         }
         else{
@@ -69,11 +74,11 @@ public class FinalBoss extends Boss{
     
     private void Ressurection(){
             resurrect--;
-            System.out.println("\n⏳ *** ASTAROTH REWINDS TIME! *** ⏳");
+            System.out.println("\n⏳ *** The Corrupted Being REWINDS TIME! *** ⏳");
             this.hp = this.maxHp;
             atk += 20;
             def += 5;
-            System.out.println("Astaroth has turned back in time and became stronger!");
+            System.out.println("The Corrupted Being has turned back in time and became stronger!");
             this.IsAlive = true;
             System.out.println("Resurrections remaining: " + resurrect);
     }
