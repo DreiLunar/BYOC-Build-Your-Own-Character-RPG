@@ -60,7 +60,8 @@ public class MonsterClass {
     }
 
     public boolean isAlive(){
-        return this.hp > 0;
+        
+        return this.hp > 0 && this.IsAlive;
     }
 
     public void applyPoison(int rounds) {
