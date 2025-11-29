@@ -1,4 +1,21 @@
-## **BYOC (BUILD YOUR OWN CHARACTER)**
+<div align="center">
+
+  <img src="Images/banner.png" alt="Project Banner" width="100%">
+
+  <h1>BYOC</h1>
+
+  <p>
+    <b>(BUILD YOU OWN CHARACTER)</b>
+  </p>
+
+  <p>
+    <img src="https://img.shields.io/badge/version-1.0.0-green" alt="Version">
+    <img src="https://img.shields.io/badge/project-OOP-blue" alt="License">
+  </p>
+
+</div>
+
+<br />
 
 ### **DESCRIPTION/OVERVIEW**
  
@@ -10,7 +27,7 @@ Can you conquer all the regions and defeat the final boss?
 
 ### **OOP CONCEPTS APPLIED**
 
-This project is developed using the four main principles of Object-Oriented Programming: Encapsulation, Inheritance, Polymorphism, and Abstraction.
+This project is developed using the four main principles of Object-Oriented Programming:
 
 <details>
   <summary><b>ENCAPSULATION</b></summary>
@@ -212,7 +229,7 @@ This diagram illustrates the relationships between the major classes, showing in
 
 **AUTHOR AND ACKNOWLEDGEMENT**
 
-Made by:
+Project Made By:
 <table>
   <tr>
     <td align="center">
