@@ -212,3 +212,65 @@ This diagram illustrates the relationships between the major classes, showing in
 
 **AUTHOR AND ACKNOWLEDGEMENT**
 
+Made by:
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Invxty">
+        <img src="https://github.com/Invxty.png" width="100px;" alt=""/>
+      </a>
+      <br />
+      <sub><b>Abrigo, John Nathaniel F.</b></sub>
+      <br />
+      <a href="https://github.com/Invxty">
+        <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" />
+      </a>
+      <br />
+      <a href="https://instagram.com/rvstyyyy">
+        <img src="https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white" />
+      </a>
+      <br />
+      <a href="https://discordapp.com/users/755650211065364520">
+        <img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white" />
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/ALfish152">
+        <img src="https://github.com/ALfish152.png" width="100px;" alt=""/>
+      </a>
+      <br />
+      <sub><b>Almira, Aeron A.</b></sub>
+      <br />
+      <a href="https://github.com/ALfish152">
+        <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" />
+      </a>
+      <br />
+      <a href="https://instagram.com/alfish152">
+        <img src="https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white" />
+      </a>
+      <br />
+      <a href="https://discordapp.com/users/935400536352641035">
+        <img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white" />
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/DreiLunar">
+        <img src="https://github.com/DreiLunar.png" width="100px;" alt=""/>
+      </a>
+      <br />
+      <sub><b>Lunar, Von Andrei G.</b></sub>
+      <br />
+      <a href="https://github.com/DreiLunar">
+        <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" />
+      </a>
+      <br />
+      <a href="https://instagram.com/drei.lunar">
+        <img src="https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white" />
+      </a>
+      <br />
+      <a href="https://discordapp.com/users/551348088963465236">
+        <img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white" />
+      </a>
+    </td>
+  </tr>
+</table>
