@@ -1,7 +1,6 @@
 package Models;
 
 import java.util.Scanner;
-import Models.TextColor;
 
 public class Player {
     private String name;
@@ -180,14 +179,17 @@ public class Player {
         switch(choice) {
             case 0:
                 this.strengthMult += 0.3; 
+                this.atk += 50;
                 break;
 
             case 1: 
                 this.magicMult += 0.3; 
+                this.atk += 50;
                 break;
 
             case 2: 
-                this.chantDuration += 1; 
+                this.maxHp += 1000; 
+                this.def += 50;
                 break;
         }
     }
@@ -195,7 +197,7 @@ public class Player {
     public String getName() { return name; }
     public int getHp() { return hp; }
     public int getAtk() { int currentAtk = this.atk;
-        if(this.chantDuration >0){
+        if(this.chantDuration > 0){
             currentAtk = (int)(currentAtk * 1.3);
         }
         return currentAtk; }

@@ -149,7 +149,6 @@ public class MainGame {
             }
             System.out.println("\n" + TextColor.success("✨ " + general.name + " has been vanquished! ✨"));
             givePathRewards(player, i+1);
-            levelUpPlayer(player, i+1, 3); // Use region index 3 for Path to the End
             ConsoleEffect.pause(1000);
         }
         return true; // Player won the region
@@ -321,15 +320,22 @@ public class MainGame {
         switch (regionIndex) {
             case 0: // Grasslands
                 player.upgradeAbility(0);
-                System.out.println(TextColor.success("The Boar king dropped a strengthening gauntlet! Your physical strikes now carry devastating force."));
+                player.getAtk();
+                ConsoleEffect.type(TextColor.success("The Boar king dropped a strengthening gauntlet!"),150); 
+                ConsoleEffect.type(TextColor.success("Your physical strikes now carry devastating force."),ConsoleEffect.NORMAL);
                 break;
             case 1: // Dungeons
-                System.out.println(TextColor.success("You picked up a mysterious artifact from the Litch's remains! Your elemental spells have evolved into tools of destruction."));
+                ConsoleEffect.type(TextColor.success("You picked up a mysterious artifact from the Litch's remains!"),150);
+                 ConsoleEffect.type(TextColor.success("Your elemental spells have evolved into tools of destruction."),ConsoleEffect.NORMAL);
                 player.upgradeAbility(1);
+                player.getAtk();
                 break;
             case 2: // Barren Lands
-                System.out.println(TextColor.success("As the Undead King withers, his remains contain an ancient totem that improves your focus! Buffs (Wind Chant) last 1 turn longer."));
+                ConsoleEffect.type(TextColor.success("As the Undead King withers, his remains contain an ancient totem that improves your durability!"),150);
+                ConsoleEffect.type(TextColor.success("Max Hp +1000, Def +50."),ConsoleEffect.NORMAL);
                 player.upgradeAbility(2);
+                player.getMaxHp();
+                player.getDef();
                 break;
         }
     }
@@ -338,28 +344,36 @@ public class MainGame {
         switch (generalNumber) {
             case 1: // Forneus
                 player.upgradeAbility(1);
-                System.out.println(TextColor.dialogue("He kneels in despair, screeching with an otherworldly agony."));
-                System.out.println(TextColor.success("Defeating Forneus granted you the Marshal's Glyph! A surge of raw mana emboldens your body."));
+                player.getAtk();
+                ConsoleEffect.type(TextColor.dialogue("He kneels in despair, screeching with an otherworldly agony."), 150);
+                ConsoleEffect.type(TextColor.success("Defeating Forneus granted you the Marshal's Glyph! A surge of raw mana emboldens your body.\n"),ConsoleEffect.NORMAL);
                 break;
 
             case 2: // Asmodeus
-                System.out.println(TextColor.dialogue("Asmodeus, amazed by your performance, he granted you the Admiral's Edge! Your weapon hums with newfound power."));
+                ConsoleEffect.type(TextColor.dialogue("Asmodeus, amazed by your performance, he granted you the Admiral's Edge!"),150);
+                ConsoleEffect.type(TextColor.success("Your weapon hums with newfound power."),ConsoleEffect.NORMAL);
                 player.upgradeAbility(0);
+                player.getAtk();
                 break;
                 
             case 3: // Dantalion
-                System.out.println(TextColor.dialogue("Dantalion bows. The General whose sword once caused the apocalypse recognizes your strength."));
-                System.out.println(TextColor.success("He grants you the General's Resolve! Your spirit is unyielding; your battle enchantments now last longer"));
+                ConsoleEffect.type(TextColor.dialogue("Dantalion bows. The General whose sword once caused the apocalypse recognizes your strength."),150);
+                ConsoleEffect.type(TextColor.success("He grants you the General's Resolve! Your spirit is unyielding; your are now more durable!\n"),ConsoleEffect.NORMAL);
                 player.upgradeAbility(2);
+                player.getMaxHp();
+                player.getDef();
                 break;
 
             case 4: // Astaroth
-                System.out.println(TextColor.dialogue("Almighty as one can be, everyone must fall. The once Great Duke now yields to the inevitable flow of time."));
-                System.out.println(TextColor.success("Astaroth grants you the **Authority of the End**!"));
-                System.out.println(TextColor.important(">> Your destructive potential has transcended limits, while your battle enchantments now defy the very flow of time. <<"));
+                ConsoleEffect.type(TextColor.dialogue("Almighty as one can be, everyone must fall. The once Great Duke now yields to the inevitable flow of time."),150);
+                ConsoleEffect.type(TextColor.success("Astaroth grants you the **Authority of the End**!"),150);
+                ConsoleEffect.type(TextColor.important(">> Your destructive potential has transcended limits, while your permenance now defy the very flow of time. <<\n"),100);
                 player.upgradeAbility(2);
                 player.upgradeAbility(1);
                 player.upgradeAbility(0);
+                player.getMaxHp();
+                player.getDef();
+                player.getAtk();
                 break;
         }
     }
