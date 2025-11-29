@@ -154,7 +154,57 @@ public void takeTurn(Player target) {
 
 
 
-**PROGRAM STRUCTURE**
+### **PROGRAM STRUCTURE**
+
+The project is organized into several key packages and classes that work together to run the game. 
+The main components are divided into the `Game`, `Models`, and `MonsterFiles` packages.
+
+#### **Main Classes and Their Roles**
+
+*   **`Game.MainGame`**: This is the central class that contains the `main` method, acting as the entry point of the program. It manages the overall game flow, including player creation, progressing through regions, and initiating battles.
+
+*   **`Game.BattleSystem`**: This class handles the logic for all combat encounters. It takes a `Player` and a `MonsterClass` object and manages the turn-based battle sequence until one is defeated. It is a prime example of abstraction, as it hides the complex details of a fight from the `MainGame`.
+
+*   **`Models.Player`**: This class represents the user's character. It encapsulates all player-related data, such as stats (`hp`, `atk`, `def`), inventory, and abilities. It also includes methods for taking damage, healing, and leveling up.
+
+*   **`MonsterFiles.MonsterClass`**: This is the base superclass for all enemies in the game. It defines the common attributes and methods that every monster shares, such as `name`, `hp`, and a `takeTurn()` method.
+
+*   **`MonsterFiles.Boss` and other subclasses**: These classes inherit from `MonsterClass` to create specific types of enemies. For example, `Boss` is a subclass for major enemies, and classes like `BoarKing` or `FinalBoss` extend it to implement unique behaviors by overriding the `takeTurn()` method.
+
+#### **Class Relationship Diagram**
+
+This diagram illustrates the relationships between the major classes, showing inheritance and composition.
+
+```
+[MainGame]
+    |
+    | uses V
+    +------> [BattleSystem]
+    |           |
+    |           | uses V
+    |           +------> [Player]
+    |           |
+    |           | uses V
+    |           +------> [MonsterClass] <---+
+    |                                       | (extends)
+    +---------------------------------------+
+                                            |
+           +--------------------------------+
+           |                                |
+      [Boss]                           [CommonEnemies]
+           |                                |
+           | (extends)                      | (extends)
+           |                                |
+      [FinalBoss]                      [BoarKing]
+      [Astaroth]                       (and stage other bosses...)
+      (and other general bosses...)
+```
+
+*   **`MainGame`** creates and uses instances of `Player` and various `MonsterClass` subclasses.
+*   **`MainGame`** uses the static `BattleSystem.battle()` method to run combat.
+*   **`BattleSystem`** takes `Player` and `MonsterClass` objects to manage the fight.
+*   **`Boss`** and **`CommonEnemies`** are subclasses that **extend** `MonsterClass`.
+*   Specific bosses like **`FinalBoss`** and **`BoarKing`** **extend** `Boss` or `MonsterClass` and provide their own unique implementations.
 
 **HOW TO RUN THE PROGRAM**
 
