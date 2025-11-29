@@ -18,7 +18,7 @@ public class Asmodeus extends Boss{
     public void hpBasedDamage(Player target){
         double damage = (0.25 * target.getHp() + atk); // Use getter method
         target.takeDamage((int)damage);
-        System.out.println(this.name + " attacks for " + damage + " damage!");
-        System.out.println("Player HP is now: " + target.getHp());
+        // System.out.println(this.name + " attacks for " + damage + " damage!");
+        // System.out.println("Player HP is now: " + target.getHp());
     }
 }

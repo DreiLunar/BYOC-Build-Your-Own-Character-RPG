@@ -1,6 +1,7 @@
 package Models;
 
 import java.util.Scanner;
+import Models.TextColor;
 
 public class Player {
     private String name;
@@ -27,23 +28,23 @@ public class Player {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\n==========================================");
-        ConsoleEffect.type("        YOU HAVE BEEN REINCARNATED        ", ConsoleEffect.FAST);
+        ConsoleEffect.type(TextColor.important("        YOU HAVE BEEN REINCARNATED        "), ConsoleEffect.FAST);
         System.out.println("==========================================");
 
-        ConsoleEffect.type("Welcome to the god's realm, " + name + ". Let's determine your fate.", ConsoleEffect.NORMAL);
+        ConsoleEffect.type(TextColor.dialogue("Welcome to the god's realm, " + name + ". Let's determine your fate."), ConsoleEffect.NORMAL);
         waitForInput(scanner);
 
-        ConsoleEffect.type(">> Determining which RACE you are...", ConsoleEffect.FAST);
+        ConsoleEffect.type(TextColor.status(">> Determining which RACE you are..."), ConsoleEffect.FAST);
         ConsoleEffect.pause(1000);
 
         Race randomRace = Race.getRandomRace();
         this.raceName = randomRace.getRaceName();
 
-        ConsoleEffect.type("   Result: You will be born as [ " + this.raceName.toUpperCase() + " ]!", ConsoleEffect.SLOW);
+        ConsoleEffect.type(TextColor.success("   Result: You will be born as [ " + this.raceName.toUpperCase() + " ]!"), ConsoleEffect.SLOW);
         ConsoleEffect.pause(1000);
         waitForInput(scanner);
 
-        ConsoleEffect.type(">> Determining your WEAPON compatibility...", ConsoleEffect.FAST);
+        ConsoleEffect.type(TextColor.status(">> Determining your WEAPON compatibility..."), ConsoleEffect.FAST);
         ConsoleEffect.pause(1000);
 
         Weapon randomWeapon = Weapon.getRandomWeapon();
@@ -51,7 +52,7 @@ public class Player {
         this.move1Name = randomWeapon.getMove1Name();
         this.move2Name = randomWeapon.getMove2Name();
 
-        ConsoleEffect.type("   Result: You wield the [ " + this.weaponName.toUpperCase() + " ]!", ConsoleEffect.SLOW);
+        ConsoleEffect.type(TextColor.success("   Result: You wield the [ " + this.weaponName.toUpperCase() + " ]!"), ConsoleEffect.SLOW);
         ConsoleEffect.pause(1000);
         waitForInput(scanner);
 
@@ -62,7 +63,7 @@ public class Player {
         this.sp = randomRace.getSp() + randomWeapon.getSp();
 
         System.out.println("------------------------------------------");
-        ConsoleEffect.type("          REINCARNATION SUCCESS!          ", ConsoleEffect.FAST);
+        ConsoleEffect.type(TextColor.important("          REINCARNATION SUCCESS!          "), ConsoleEffect.FAST);
         System.out.println("------------------------------------------");
         ConsoleEffect.pause(500);
         System.out.println(" Name:   " + this.name);
@@ -109,7 +110,7 @@ public class Player {
             if (this.hp > maxHp) {
                 this.hp = maxHp;
             }
-            System.out.println(">> " + name + " healed for " + amount + " HP.");
+            System.out.println(TextColor.heal(">> " + name + " healed for " + amount + " HP."));
         }
     }
 
@@ -148,7 +149,7 @@ public class Player {
         }
         if (this.hp < 0) this.hp = 0;
         this.hp -= actualDamage;
-        System.out.println(">> " + name + " took " + actualDamage + " damage! (HP: " + hp + "/" + maxHp + ")");
+        System.out.println(TextColor.damage(">> " + name + " took " + actualDamage + " damage! (HP: " + hp + "/" + maxHp + ")"));
     }
 
     public boolean isAlive() {
@@ -157,13 +158,13 @@ public class Player {
 
     public void castWindChant(){
         this.chantDuration = 3;
-        System.out.println("You chant with the wind! (attack increased for 3 rounds)");
+        System.out.println(TextColor.status("You chant with the wind! (attack increased for 3 rounds)"));
     }
     
     public void buffTimer(){
         if(this.chantDuration > 0){
             this.chantDuration--;
-            System.out.println("Blessed by the wind: " + this.chantDuration + " rounds remaining!");
+            System.out.println(TextColor.status("Blessed by the wind: " + this.chantDuration + " rounds remaining!"));
             
             if(this.chantDuration == 0){
                 System.out.println("The autumn breeze subsides. Your attack returns to normal.");

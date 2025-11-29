@@ -1,6 +1,7 @@
 package MonsterFiles;
 
 import Models.Player;
+import Models.TextColor;
 
 public class MonsterClass {
     public String name;
@@ -51,10 +52,10 @@ public class MonsterClass {
         
         if(this.hp <= 0){
         this.hp = 0;
-        System.out.println(">> " + this.name + " took " + actualDamage + " damage! (HP: " + this.hp + "/" + this.maxHp + ")");
+        System.out.println(TextColor.enemyDamage(">> " + this.name + " took " + actualDamage + " damage! (HP: " + this.hp + "/" + this.maxHp + ")"));
         }
         else{
-            System.out.println(">> " + this.name + " took " + actualDamage + " damage! (HP: " + this.hp + "/" + this.maxHp + ")");
+            System.out.println(TextColor.enemyDamage(">> " + this.name + " took " + actualDamage + " damage! (HP: " + this.hp + "/" + this.maxHp + ")"));
         }
     }
 
