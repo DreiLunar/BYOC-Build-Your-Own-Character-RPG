@@ -5,7 +5,6 @@ import Models.Player;
 public class FinalBoss extends Boss{
     int resurrect = 3;
     int max_hp;
-    private boolean checkRessurect = true;
     private boolean SoulRot = false;
     private int timer = 2;
     
@@ -56,13 +55,11 @@ public class FinalBoss extends Boss{
     private void Ressurection(){
         if(resurrect > 0){
             resurrect--;
-            hp = max_hp; // Fixed: should be hp, not maxHp
+            hp = max_hp;
             atk += 20;
             def += 5;
-            System.out.println("The Corrupted Being has turned back in time and became stronger!"); // Fixed name
+            System.out.println("The Corrupted Being has turned back in time and became stronger!");
             System.out.println("Resurrections remaining: " + resurrect);
-        } else {
-            checkRessurect = false; // Set to false when no resurrections left
         }
     }
     

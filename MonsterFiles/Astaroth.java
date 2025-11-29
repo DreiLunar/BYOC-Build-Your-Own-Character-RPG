@@ -5,7 +5,6 @@ import Models.Player;
 public class Astaroth extends Boss{
     int resurrect = 3;
     int max_hp;
-    private boolean checkRessurect = true; 
     
     public Astaroth(String name, int atk, int maxHp, int def, int sp) {
         super(name, atk, maxHp, def, sp);
@@ -33,8 +32,6 @@ public class Astaroth extends Boss{
             def += 5;
             System.out.println("Astaroth has turned back in time and became stronger!");
             System.out.println("Resurrections remaining: " + resurrect);
-        } else {
-            checkRessurect = false; // Set to false when no resurrections left
         }
     }
 
