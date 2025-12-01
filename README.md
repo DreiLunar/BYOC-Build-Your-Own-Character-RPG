@@ -1,8 +1,8 @@
 <div align="center">
 
-  <img src="Images/void.gif" alt="Project Banner" width="100%">
-
   <h1>BYOC</h1>
+
+  <img src="Images/Void.gif" alt="Project Banner" width="100%">
 
   <p>
     <b>(BUILD YOU OWN CHARACTER)</b>
