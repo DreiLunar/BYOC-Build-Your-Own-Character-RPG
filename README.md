@@ -15,7 +15,7 @@
 
 <br />
 
-### **DESCRIPTION/OVERVIEW**
+### **📍DESCRIPTION/OVERVIEW**
  
 This project is a text-based, build-your-own-character RPG game based on TikTok roulette games. 
 In this game, you'll create your own hero and embark on a journey through various regions, each with its own distinct set of enemies and a challenging boss at the end. 
@@ -23,7 +23,7 @@ As you defeat enemies, you'll level up, increase your stats, and earn points to 
 The game features a variety of enemies, challenging boss battles, and a final, epic confrontation to save the world. 
 Can you conquer all the regions and defeat the final boss?
 
-### **OOP CONCEPTS APPLIED**
+### **📍OOP CONCEPTS APPLIED**
 
 This project is developed using the four main principles of Object-Oriented Programming:
 
@@ -169,12 +169,12 @@ public void takeTurn(Player target) {
 
 
 
-### **PROGRAM STRUCTURE**
+### **📍PROGRAM STRUCTURE**
 
 The project is organized into several key packages and classes that work together to run the game. 
 The main components are divided into the `Game`, `Models`, and `MonsterFiles` packages.
 
-#### **Main Classes and Their Roles**
+#### **📌Main Classes and Their Roles**
 
 *   **`Game.MainGame`**: This is the central class that contains the `main` method, acting as the entry point of the program. It manages the overall game flow, including player creation, progressing through regions, and initiating battles.
 
@@ -186,7 +186,7 @@ The main components are divided into the `Game`, `Models`, and `MonsterFiles` pa
 
 *   **`MonsterFiles.Boss` and other subclasses**: These classes inherit from `MonsterClass` to create specific types of enemies. For example, `Boss` is a subclass for major enemies, and classes like `BoarKing` or `FinalBoss` extend it to implement unique behaviors by overriding the `takeTurn()` method.
 
-#### **Class Relationship Diagram**
+#### **📌Class Relationship Diagram**
 
 This diagram illustrates the relationships between the major classes, showing inheritance and composition.
 
@@ -221,9 +221,9 @@ This diagram illustrates the relationships between the major classes, showing in
 *   **`Boss`** and **`CommonEnemies`** are subclasses that **extend** `MonsterClass`.
 *   Specific bosses like **`FinalBoss`** and **`BoarKing`** **extend** `Boss` or `MonsterClass` and provide their own unique implementations.
 
-**HOW TO RUN THE PROGRAM**
+**📍HOW TO RUN THE PROGRAM**
 
-**SAMPLE OUTPUT**
+**📍SAMPLE OUTPUT**
 <details>
   <summary>Character Creation</summary>
 <img src="Images/CharacterCreation.png" alt="Char Creation" width="50%">
@@ -249,7 +249,7 @@ This diagram illustrates the relationships between the major classes, showing in
 <img src="Images/End.png" alt="Ending" width="50%">
 </details>
 
-**AUTHOR AND ACKNOWLEDGEMENT**
+**📍AUTHOR AND ACKNOWLEDGEMENT**
 
 Project Made By:
 <table>
