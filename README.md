@@ -224,6 +224,30 @@ This diagram illustrates the relationships between the major classes, showing in
 **HOW TO RUN THE PROGRAM**
 
 **SAMPLE OUTPUT**
+<details>
+  <summary>Character Creation</summary>
+<img src="Images/CharacterCreation.png" alt="Char Creation" width="50%">
+</details>
+
+<details>
+  <summary>Stats Upgrade</summary>
+<img src="Images/StatsUpgrade.png" alt="Stats Up" width="50%">
+</details>
+
+<details>
+  <summary>Stage Clear</summary>
+<img src="Images/Dungeons%20Boss%20Clear.png" alt="Boss Clear" width="50%">
+</details>
+
+<details>
+  <summary>Boss Special Ability</summary>
+<img src="Images/Astaroth.png" alt="Astaroth" width="50%">
+</details>
+
+<details>
+  <summary>Ending</summary>
+<img src="Images/End.png" alt="Ending" width="50%">
+</details>
 
 **AUTHOR AND ACKNOWLEDGEMENT**
 
