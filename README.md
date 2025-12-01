@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="Images/banner.png" alt="Project Banner" width="100%">
+  <img src="Images/void.gif" alt="Project Banner" width="100%">
 
   <h1>BYOC</h1>
 
