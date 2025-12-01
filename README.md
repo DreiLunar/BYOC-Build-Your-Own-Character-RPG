@@ -2,7 +2,7 @@
 
   <h1>BYOC</h1>
 
-  <img src="Images/Void.gif" alt="Project Banner" width="100%">
+  <img src="Images/Sword.gif" alt="Project Banner" width="100%">
 
   <p>
     <b>(BUILD YOU OWN CHARACTER)</b>
