@@ -1,14 +1,12 @@
 <div align="center">
 
-  <h1>BYOC</h1>
+<img src="Images/Sword.gif" alt="Project Banner" width="100%">
 
-  <img src="Images/Sword.gif" alt="Project Banner" width="100%">
+# <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=MedievalSharp&size=50&duration=1&pause=3000&color=FFFFFF&center=true&vCenter=true&multiline=true&repeat=false&width=1000&height=70&lines=BYOC" alt="Typing SVG" /></a>
 
-  <p>
-    <b>(BUILD YOU OWN CHARACTER)</b>
-  </p>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=MedievalSharp&size=25&pause=3000&color=FFFFFF&center=true&vCenter=true&multiline=true&repeat=false&width=1000&height=70&lines=Reincarnate+into+another+world+and+see+if+the+RNG+Goddess+favors+you.;Can+you+conquer+all+the+regions+and+defeat+the+final+boss%3F" alt="Typing SVG" /></a>
 
-  <p>
+<p>
     <img src="https://img.shields.io/badge/version-1.0.0-green" alt="Version">
     <img src="https://img.shields.io/badge/project-OOP-blue" alt="License">
   </p>
@@ -291,3 +289,4 @@ Project Made By:
     </td>
   </tr>
 </table>
+
