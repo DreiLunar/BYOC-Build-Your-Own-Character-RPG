@@ -2,7 +2,7 @@
 
 <img src="Images/Sword.gif" alt="Project Banner" width="100%">
 
-# <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=MedievalSharp&size=50&duration=1&pause=3000&color=FFFFFF&center=true&vCenter=true&multiline=true&repeat=false&width=1000&height=70&lines=BYOC" alt="Typing SVG" /></a>
+# <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=MedievalSharp&size=50&duration=1&pause=3000&color=FFFFFF&center=true&vCenter=true&multiline=true&repeat=false&width=1000&height=70&lines=%E2%9A%94%EF%B8%8FBYOC%E2%9A%94%EF%B8%8F" alt="Typing SVG" /></a>
 
 <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=MedievalSharp&size=25&pause=3000&color=FFFFFF&center=true&vCenter=true&multiline=true&repeat=false&width=1000&height=70&lines=Reincarnate+into+another+world+and+see+if+the+RNG+Goddess+favors+you.;Can+you+conquer+all+the+regions+and+defeat+the+final+boss%3F" alt="Typing SVG" /></a>
 
@@ -221,7 +221,58 @@ This diagram illustrates the relationships between the major classes, showing in
 *   **`Boss`** and **`CommonEnemies`** are subclasses that **extend** `MonsterClass`.
 *   Specific bosses like **`FinalBoss`** and **`BoarKing`** **extend** `Boss` or `MonsterClass` and provide their own unique implementations.
 
-### **📍HOW TO RUN THE PROGRAM**
+## 📜How to Run the Program🎮
+
+Follow these steps to download the code, set up your hero, and start your adventure!
+
+### 1️⃣ Prerequisites
+Before you begin, ensure you have the following installed:
+* **Java Development Kit (JDK) 17** or higher.
+* **IntelliJ IDEA** (or any preferred Java IDE like `VS Code`).
+
+---
+
+### 2️⃣ Installation (Get the Code)
+
+You need to duplicate (clone) the repository onto your machine.
+
+#### Option A: Using IntelliJ IDEA (Recommended)
+1.  Open IntelliJ IDEA.
+2.  On the Welcome screen, click **Get from VCS** (or go to `File` > `New` > `Project from Version Control`).
+3.  Copy and paste the repository URL:
+    ```text
+    [https://github.com/DreiLunar/BYOC-Build-Your-Own-Character-RPG.git](https://github.com/DreiLunar/BYOC-Build-Your-Own-Character-RPG.git)
+    ```
+4.  Click <kbd>Clone</kbd>.
+
+#### Option B: Using Command Line (Git Bash / Terminal)
+1.  Open your terminal.
+2.  Run the following command:
+    ```sh
+    git clone [https://github.com/DreiLunar/BYOC-Build-Your-Own-Character-RPG.git](https://github.com/DreiLunar/BYOC-Build-Your-Own-Character-RPG.git)
+    ```
+
+---
+
+### 3️⃣ Launching the Game
+
+Once the project is open in your IDE:
+
+1.  Navigate to the `src` folder in the project view.
+2.  Go to the package: `Game` -> Open `MainGame.java`.
+3.  Look for the `public static void main(String[] args)` line.
+4.  Click the **Green Play Button** ▶️ next to the line numbers (or press <kbd>Shift</kbd> + <kbd>F10</kbd>).
+
+---
+
+### 4️⃣ Play & Enjoy!
+* Follow the on-screen prompts in the console.
+* **Build** your character's stats.
+* **Fight** through the regions.
+* **Defeat** the Final Boss!
+
+> **Tip:** Make sure your console window is dragged up large enough to see the battle logs clearly!
+
 
 ### **📍SAMPLE OUTPUT**
 <details>
