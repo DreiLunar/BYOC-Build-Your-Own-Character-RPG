@@ -221,9 +221,9 @@ This diagram illustrates the relationships between the major classes, showing in
 *   **`Boss`** and **`CommonEnemies`** are subclasses that **extend** `MonsterClass`.
 *   Specific bosses like **`FinalBoss`** and **`BoarKing`** **extend** `Boss` or `MonsterClass` and provide their own unique implementations.
 
-**📍HOW TO RUN THE PROGRAM**
+### **📍HOW TO RUN THE PROGRAM**
 
-**📍SAMPLE OUTPUT**
+### **📍SAMPLE OUTPUT**
 <details>
   <summary>Character Creation</summary>
 <img src="Images/CharacterCreation.png" alt="Char Creation" width="50%">
@@ -249,7 +249,7 @@ This diagram illustrates the relationships between the major classes, showing in
 <img src="Images/End.png" alt="Ending" width="50%">
 </details>
 
-**📍AUTHOR AND ACKNOWLEDGEMENT**
+### **📍AUTHOR AND ACKNOWLEDGEMENT**
 
 Project Made By:
 <table>
