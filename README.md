@@ -210,9 +210,9 @@ This diagram illustrates the relationships between the major classes, showing in
            |                                |
            | (extends)                      | (extends)
            |                                |
-      [FinalBoss]                      [BoarKing]
-      [Astaroth]                       (and stage other bosses...)
-      (and other general bosses...)
+      [FinalBoss]                        [Slime]
+      [Astaroth]                         (and other common region monsters...)
+      (and other general and stage bosses...)
 ```
 
 *   **`MainGame`** creates and uses instances of `Player` and various `MonsterClass` subclasses.
@@ -303,6 +303,8 @@ Once the project is open in your IDE:
 </details>
 
 ## **🧑🏻‍🤝‍🧑🏻AUTHOR AND ACKNOWLEDGEMENT**💫
+
+✨We would like to express our gratitude to our CS 211 instructor, **Mr. Emmanuel Charlie Enriquez**, for overseeing this course and providing us with the knowledge and platform to demonstrate our Object-Oriented Programming skills. We also extend our appreciation to our former instructor, **Ms. Fatima Marie Agdon**, whose mentorship during our freshman year laid the solid foundation of programming logic and fundamentals that made this project possible.💖💘
 
 Project Made By:
 
