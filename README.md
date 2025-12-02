@@ -28,7 +28,7 @@ Can you conquer all the regions and defeat the final boss?
 This project is developed using the four main principles of Object-Oriented Programming:
 
 <details>
-  <summary><b>ENCAPSULATION</b></summary>
+  <summary><b>ENCAPSULATION🛡️</b></summary>
 
 Encapsulation is demonstrated by restricting direct access to an object's internal state. 
 In this project, classes like `Player` and `MonsterClass` have `private` attributes, which can only be accessed and modified through `public` getter and setter methods. 
@@ -58,7 +58,7 @@ public class Player {
 </details>
 
 <details>
-  <summary><b>INHERITANCE</b></summary>
+  <summary><b>INHERITANCE👨🏻‍👩🏻‍👧🏻‍👦🏻</b></summary>
 
   Inheritance is used to create a hierarchy of classes that share common characteristics. 
   A `MonsterClass` serves as the superclass, defining base attributes and methods for all enemies. 
@@ -90,7 +90,7 @@ public class FinalBoss extends Boss {
 </details>
 
 <details>
-  <summary><b>POLYMORPHISM</b></summary>
+  <summary><b>POLYMORPHISM🎭</b></summary>
 
   Polymorphism allows objects of different classes to be treated as instances of a common superclass. 
   This is achieved through method overriding, where a subclass provides its own implementation of a method from its superclass. 
@@ -121,7 +121,7 @@ public void takeTurn(Player target) {
 </details>
 
 <details>
-  <summary><b>ABSTRACTION</b></summary>
+  <summary><b>ABSTRACTION🪄</b></summary>
 
   Abstraction is the principle of hiding complex implementation details while exposing only essential features. 
   In our project, abstraction is achieved through the `MonsterClass`. 
