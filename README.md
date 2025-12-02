@@ -15,7 +15,7 @@
 
 <br />
 
-### **📍DESCRIPTION/OVERVIEW**
+## **📍DESCRIPTION/OVERVIEW**
  
 This project is a text-based, build-your-own-character RPG game based on TikTok roulette games. 
 In this game, you'll create your own hero and embark on a journey through various regions, each with its own distinct set of enemies and a challenging boss at the end. 
@@ -23,7 +23,7 @@ As you defeat enemies, you'll level up, increase your stats, and earn points to 
 The game features a variety of enemies, challenging boss battles, and a final, epic confrontation to save the world. 
 Can you conquer all the regions and defeat the final boss?
 
-### **📍OOP CONCEPTS APPLIED**
+## **📍OOP CONCEPTS APPLIED**
 
 This project is developed using the four main principles of Object-Oriented Programming:
 
@@ -169,7 +169,7 @@ public void takeTurn(Player target) {
 
 
 
-### **📍PROGRAM STRUCTURE**
+## **📍PROGRAM STRUCTURE**
 
 The project is organized into several key packages and classes that work together to run the game. 
 The main components are divided into the `Game`, `Models`, and `MonsterFiles` packages.
@@ -221,9 +221,12 @@ This diagram illustrates the relationships between the major classes, showing in
 *   **`Boss`** and **`CommonEnemies`** are subclasses that **extend** `MonsterClass`.
 *   Specific bosses like **`FinalBoss`** and **`BoarKing`** **extend** `Boss` or `MonsterClass` and provide their own unique implementations.
 
+<div align="center">
+
 ## 📜How to Run the Program🎮
 
 Follow these steps to download the code, set up your hero, and start your adventure!
+</div>
 
 ### 1️⃣ Prerequisites
 Before you begin, ensure you have the following installed:
@@ -258,10 +261,9 @@ You need to duplicate (clone) the repository onto your machine.
 
 Once the project is open in your IDE:
 
-1.  Navigate to the `src` folder in the project view.
+1.  Navigate to the `BYOC-Build-Your-Own-Character-RPG` folder in the project view.
 2.  Go to the package: `Game` -> Open `MainGame.java`.
-3.  Look for the `public static void main(String[] args)` line.
-4.  Click the **Green Play Button** ▶️ next to the line numbers (or press <kbd>Shift</kbd> + <kbd>F10</kbd>).
+3.  Click the **Green Play Button** ▶️ next to the line numbers (or press <kbd>Shift</kbd> + <kbd>F10</kbd>).
 
 ---
 
@@ -300,9 +302,10 @@ Once the project is open in your IDE:
 <img src="Images/End.png" alt="Ending" width="50%">
 </details>
 
-### **📍AUTHOR AND ACKNOWLEDGEMENT**
+## **🧑🏻‍🤝‍🧑🏻AUTHOR AND ACKNOWLEDGEMENT**💫
 
 Project Made By:
+
 <table>
   <tr>
     <td align="center">
@@ -364,4 +367,3 @@ Project Made By:
     </td>
   </tr>
 </table>
-
